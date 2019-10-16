@@ -1,0 +1,11 @@
+<!-- ngSubmit build in Angular function takes care of event.preventDefualt -->
+<form class="form" (ngSubmit)="onSubmit()">
+  <!-- Two way data binding [(ngModel)] -->
+  <input
+    type="text"
+    name="title"
+    [(ngModel)]="title"
+    placeholder="Add Todo.."
+  />
+  <input type="submit" value="Submit" class="btn" />
+</form>
