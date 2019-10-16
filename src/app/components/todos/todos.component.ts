@@ -14,6 +14,9 @@ export class TodosComponent implements OnInit {
 
   // Initializing data from todo.service.ts
   ngOnInit() {
-    this.todos = this.todoService.getTodos();
+    // asynchronous so use .subscribe (like .then)
+    this.todoService.getTodos().subscribe(todos => {
+      this.todos = todos;
+    });
   }
 }
