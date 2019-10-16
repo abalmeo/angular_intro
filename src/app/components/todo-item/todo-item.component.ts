@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { Todo } from 'src/app/models/Todo';
 import { TodoService } from '../../services/todo.service';
 
@@ -8,7 +8,10 @@ import { TodoService } from '../../services/todo.service';
   styleUrls: ['./todo-item.component.css']
 })
 export class TodoItemComponent implements OnInit {
+  // Taking in values
   @Input() todo: Todo;
+  // Emitting output to parent component
+  @Output() deleteTodo: EventEmitter<Todo> = new EventEmitter();
 
   constructor(private todoServie: TodoService) {}
 
@@ -32,6 +35,10 @@ export class TodoItemComponent implements OnInit {
   }
 
   onDelete(todo) {
-    console.log('todo');
+    // 1) Clicking on delete button in todo-item.component.html
+    // 2) Goes to  todos.component.ts and deleteTodo function is called
+    // 3) Going into this todo-item.component.ts(here) and emitting up, setting as output
+    // 4) Catching in todos.component.html and setting deleteTodo and logging from todos.component.ts
+    this.deleteTodo.emit(todo);
   }
 }
