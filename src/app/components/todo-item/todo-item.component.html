@@ -1,2 +1,10 @@
-<!-- Interpolated string to target variable names from .ts component-specific file-->
-<p>{{ todo.title }}</p>
+<!-- ngClass will return style of is-complete if object key in array for completed is true -->
+<div [ngClass]="setClasses()">
+  <p>
+    <!-- event in Angular is with parantheses, and can set method by setting ewual to -->
+    <input (change)="onToggle(todo)" type="checkbox" />
+    <!-- Interpolated string to target variable names from .ts component-specific file-->
+    {{ todo.title }}
+    <button (click)="onDelete(todo)" class="del">x</button>
+  </p>
+</div>
